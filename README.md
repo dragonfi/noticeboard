@@ -13,8 +13,8 @@ It is assumed that python3, pip3, nodejs, jasmine and karma are installed.
 
 It is recommended to create a python virtual environment in order not to clutter up the global site directory.
 
-  pip3 install -r requirements.txt
-  npm install angular angular-mocks --prefix noticeboard/static
+    pip3 install -r requirements.txt
+    npm install angular angular-mocks --prefix noticeboard/static
   
 ## Test
 
@@ -23,6 +23,6 @@ These will continually check your source files for changes and automatically re-
 
 ## Run developement server
 
-  python3 noticeboard/noticeboard.py
+    python3 noticeboard/noticeboard.py
 
   
