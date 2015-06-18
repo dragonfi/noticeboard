@@ -12,8 +12,19 @@
 
     NoticeboardCtrl.$inject = ["$scope", "$http"];
     function NoticeboardCtrl($scope, $http){
-        $http.get("/api/v1/notes").success(function(data){
-            $scope.notes = data["notes"];
-        });
+        function refresh_notes(){
+            $http.get("/api/v1/notes").success(function(data){
+                $scope.notes = data["notes"];
+            });
+        };
+
+        $scope.create_note = function(){
+            $http.get("/api/v1/notes/create/" + $scope.new_text)
+            .success(function(data){
+                refresh_notes();
+            });
+        };
+
+        refresh_notes();
     }
 })();

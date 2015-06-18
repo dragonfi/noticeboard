@@ -1,3 +1,8 @@
 <h4>Notices:</h4>
 <p class="note" ng-repeat="note in notes">{{note.id}}: {{note.text}}</p>
-<h4>Number of notes: {{notes.length}}</h4>
+<h5>New note:</h5>
+<h6 ng-show="new_text">Preview:</h6>
+<p ng-show="new_text">{{new_text}}</p>
+<input type="textarea" ng-model="new_text"></input>
+<button type="button" ng-click="create_note()">Add Note</button>
+<h5>Number of notes: {{notes.length}}</h4>
