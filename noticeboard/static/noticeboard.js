@@ -10,8 +10,8 @@
         };
     });
 
-    NoticeboardCtrl.$inject = ["$scope", "$http"];
-    function NoticeboardCtrl($scope, $http){
+    NoticeboardCtrl.$inject = ["$scope", "$http", "$interval"];
+    function NoticeboardCtrl($scope, $http, $interval){
         function refresh_notes(){
             $http.get("/api/v1/notes").success(function(data){
                 $scope.notes = data["notes"];
@@ -25,6 +25,7 @@
             });
         };
 
+        $interval(refresh_notes, 1000);
         refresh_notes();
     }
 })();
