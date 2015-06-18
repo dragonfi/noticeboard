@@ -5,7 +5,7 @@ import json
 import sqlite3
 import datetime
 from contextlib import closing
-from flask import Flask, g, jsonify
+from flask import Flask, g, jsonify, redirect
 
 """API overview:
 
@@ -83,7 +83,7 @@ def before_request():
 
 @app.route("/")
 def hello_world():
-    return "Hello world!"
+    return redirect("static/index.html")
 
 
 @app.route("/api")
