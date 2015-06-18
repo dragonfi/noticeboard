@@ -53,3 +53,14 @@ class TestNoticeboard(unittest.TestCase):
         notes = self.decode_json(resp)["notes"]
         self.assertIn(note1, notes)
         self.assertIn(note2, notes)
+
+    def test_deleted_node_is_not_listed_in_notes(self):
+        text = "Hello, 世界!"
+        resp = self.app.get("/api/v1/notes/create/{}".format(text))
+        note = self.decode_json(resp)["note"]
+
+        self.app.get("/api/v1/notes/delete/{}".format(note["id"]))
+
+        resp = self.app.get("/api/v1/notes")
+        notes = self.decode_json(resp)["notes"]
+        self.assertNotIn(note, notes)

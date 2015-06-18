@@ -1,5 +1,8 @@
 <h4>Notices:</h4>
-<p class="note" ng-repeat="note in notes">{{note.id}}: {{note.text}}</p>
+<div ng-repeat="note in notes">
+    <span>{{note.id}}: {{note.text}}</span>
+    <button type="button" ng-click="delete_note(note.id)">Delete</button>
+</div>
 <h5>New note:</h5>
 <h6 ng-show="new_text">Preview:</h6>
 <p ng-show="new_text">{{new_text}}</p>

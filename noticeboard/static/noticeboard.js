@@ -25,6 +25,14 @@
             });
         };
 
+        $scope.delete_note = function(note_id){
+            $http.get("/api/v1/notes/delete/" + note_id)
+            .success(function(data){
+                refresh_notes();
+            });
+        };
+
+
         $interval(refresh_notes, 1000);
         refresh_notes();
     }

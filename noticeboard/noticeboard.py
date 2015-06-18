@@ -55,6 +55,12 @@ def create_row(table, fields, values):
     return get_row(table, c.lastrowid)
 
 
+def delete_row(table, row_id):
+    g.db.execute("delete from {} where id={}".format(table, row_id))
+    g.db.commit()
+    return row_id
+
+
 def connect_db():
     conn = sqlite3.connect(app.config["DATABASE"])
     conn.row_factory = sqlite3.Row
@@ -108,6 +114,11 @@ def return_note(note_id):
     note = get_row("Notes", note_id)
     return jsonify({"note": note})
 
+
+@app.route("/api/v1/notes/delete/<note_id>", methods=["GET", "POST"])
+def delete_note(note_id):
+    delete_row("Notes", note_id)
+    return jsonify({"deleted_note_id": note_id})
 
 if __name__ == "__main__":
     app.run(debug=True)
