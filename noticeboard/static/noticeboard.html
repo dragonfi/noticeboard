@@ -1,11 +1,14 @@
 <h4>Notices:</h4>
-<div ng-repeat="note in notes">
+<div class="note" ng-repeat="note in notes">
     <span>{{note.id}}: {{note.text}}</span>
     <button type="button" ng-click="delete_note(note.id)">Delete</button>
 </div>
-<h5>New note:</h5>
-<h6 ng-show="new_text">Preview:</h6>
-<p ng-show="new_text">{{new_text}}</p>
-<input type="textarea" ng-model="new_text"></input>
-<button type="button" ng-click="create_note()">Add Note</button>
-<h5>Number of notes: {{notes.length}}</h4>
+<hr></hr>
+<div class="note new-note-preview" ng-show="new_text">
+    <span>Preview: {{new_text}}</span>
+</div>
+<div class="add-note-form">
+    <input type="textarea" ng-model="new_text"></input>
+    <button type="button" ng-click="create_note()">Add Note</button>
+</div>
+<p>Number of notes: {{notes.length}}</p>
